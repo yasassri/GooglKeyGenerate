@@ -21,7 +21,7 @@ public class googleAPIcreation {
   public void setUp() throws Exception {
     //System.setProperty("webdriver.gecko.driver", "/test/resources/geckodriver");
     //System.setProperty("webdriver.firefox.marionette","/test/resources/geckodriver");
-    System.setProperty("webdriver.chrome.driver", "/test/resources/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "/home/yasassri/QA_STUFF/current_work/selenium/GooglKeyGenerate/src/test/resources/chromedriver");
     driver = new ChromeDriver();
     //baseUrl = "https://www.katalon.com/";
 
@@ -31,15 +31,19 @@ public class googleAPIcreation {
   @Test
   public void testUntitledTestCase() throws Exception {
     driver.get("https://accounts.google.com/signin/v2/identifier?service=cloudconsole&passive=1209600&osid=1&continue=https%3A%2F%2Fconsole.developers.google.com%2Fapis%2F&followup=https%3A%2F%2Fconsole.developers.google.com%2Fapis%2F&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+//    driver.get("https://accounts.google.com");
     driver.findElement(By.id("identifierId")).clear();
-    driver.findElement(By.id("identifierId")).sendKeys("username");
+    driver.findElement(By.id("identifierId")).sendKeys("ycrnet@gmail.com  ");
+
     if(driver.findElement(By.id("identifierNext")).isDisplayed()){
       System.out.println("VISBLE-========");
     }
     WebElement link = driver.findElement(By.id("identifierId"));
     Actions builder = new Actions(driver);
     builder.moveToElement(link).click();
+    builder.sendKeys(Keys.ENTER);
     builder.perform();
+
 
     String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject){ arguments[0].fireEvent('onmouseover');}";
 
@@ -54,11 +58,12 @@ public class googleAPIcreation {
     executor.executeScript("var elem=arguments[0]; setTimeout(function() {elem.click();}, 100)", link);
     Thread.sleep(3000);
     driver.findElement(By.name("password")).clear();
-    driver.findElement(By.name("password")).sendKeys("password");
+    driver.findElement(By.name("password")).sendKeys("xxxxx");
     driver.findElement(By.xpath("//div[@id='passwordNext']/content/span")).click();
     driver.findElement(By.xpath("//a[@id='p6ntest-vulcan-leftnav-credentials']/span")).click();
-    driver.findElement(By.linkText("Web client 2")).click();
+    driver.findElement(By.linkText("Manee")).click();
     driver.findElement(By.xpath("//li[2]")).click();
+    Thread.sleep(10000);
   }
 
   @AfterClass(alwaysRun = true)
